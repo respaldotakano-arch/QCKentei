@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendizaje en línea del examen QC</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { width: 80%; margin: auto; }
+        .section { margin: 20px 0; }
+        .button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .hidden { display: none; }
+        #subjectButtons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aprendizaje en línea del examen QC</h1>
+        
+        <div class="section">
+            <h2>¿Qué es el examen QC?</h2>
+            <p>El examen QC (Certificación de Gestión de Calidad) es una prueba que evalúe el conocimiento sobre gestión de calidad. Tiene niveles desde el grado 1 hasta el grado 4.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Seleccion el grado que desea estudiar.</h2>
+            <button class="button" onclick="selectLevel(1)">Nivel 1</button>
+            <button class="button" onclick="selectLevel(2)">Nivel 2</button>
+            <button class="button" onclick="selectLevel(3)">Nivel 3</button>
+            <button class="button" onclick="selectLevel(4)">Nivel 4</button>
+            <button class="button" onclick="selectLevel(5)">Examen Simulado</button>
+        </div>
+        
+        <div class="section hidden" id="subjectSelection">
+            <h2 id="subjectTitle"></h2>
+            <div id="subjectButtons"></div>
+        </div>
+    </div>
+    
+    <script>
+        const git = "https://hiroshiatakano.github.io/QC_Kentei/QCKentei"
+        const subjects = {
+            1: ["Cómo recopilar y organizar los datos", 
+                "Siete herramientas nuevas del control de calidad", 
+                "Fundamentos de los métodos estadísticos", 
+                "Prueba y Estimación",
+                "Diagrama de control",
+                "Inspección por muestreo",
+                "Diseño Experimental",
+                "Método no paramétrico de análisis",
+                "Análisis de correlación y Análisis de regresión",
+                "Métodos de análisis multivariante",
+                "Ingeniería de la confiabilidad",
+                "Diseño de parámetros robustos",
+                "El concepto de calidad",
+                "Garantía de calidad",
+                "Elementos de la gestión de la calidad",
+                "Ética y responsibilidad social",
+                "Actividades prácticas relacionadas con el control de calidad",
+                ],
+            2: ["Métodos de recopilación y resumen de datos",
+                "Las siete nuevas herramientas de control de calidad", 
+                "Fundamentos de los métodos estadísticos",
+                "Prueba estadística y Estimación",
+                "Gráfico de control",
+                "Inspección por muestreo",
+                "Diseño de experimentos",
+                "Análisis de correlación y análisis de regresión",
+                "Ingeniería de confiabilidad",
+                "El punto de vista y la forma de pensar del Control de Calidad",
+                "El concepto de calidad",
+                "Métodos de gestión",
+                "Garantía de Calidad",
+                "Elementos de gestión de calidad",
+                "Ética y responsabilidad social",
+                "Actividades prácticas relacionadas con el control",
+                ],
+            3: ["Métodos de recolección y organización de datos", 
+                "Siete Herramientas de Calidad (QC)",
+                "Las siete nuevas herramientas de control de calidad (Nuevo)",
+                "Los fundamentos de los métodos estadísticos",
+                "Gráfico de Control",
+                "Índice de capacidad del proceso",
+                "Análisis de correlación",
+                "Enfoque y pensamiento basado en el Control de Calidad (QC)",
+                "Calidad",
+                "Métodos de gestión",
+                "Calidad garantizada / Aseguramiento de la calidad",
+                "Elementos de la gestión de calidad",
+                ],
+            4: ["Control de Calidad",
+                "Gestión",
+                "Mejora (KAIZEN)",
+                "Proceso",
+                "Inspección (Verificación)",
+                "Estándar y Estandarización",
+                "Decisión basada en hechos",
+                "Uso e interpretación de datos",
+                "Fundamentos de la actividad empresarial",
+            ],
+            5: ["Nivel 1", "Nivel 2", "Nivel 3", "Nivel 4"],
+        };
+
+        console.log(git)
+        
+        function selectLevel(level) {
+            document.getElementById('subjectTitle').innerText = 'Seleccion la materia del grado ' + level;
+            const subjectButtons = document.getElementById('subjectButtons');
+            subjectButtons.innerHTML = '';
+            
+            subjects[level].forEach((subject, index) => {
+                const button = document.createElement('button');
+                button.className = 'button';
+                button.innerText = subject;
+                button.onclick = () => location.href = `https://hiroshiatakano.github.io/QC_Kentei/QCKentei${level}-${index + 1}.html`;
+                subjectButtons.appendChild(button);
+            });
+            
+            document.getElementById('subjectSelection').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
+
